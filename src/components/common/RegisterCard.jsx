@@ -62,7 +62,7 @@ const RegisterCard = () => {
 
     return (
         <div className="w-full p-0 rounded-xl space-y-4 transition-all duration-300">
-            <Card className="w-full max-w-sm bg-white shadow-none border">
+            <Card className="w-full max-w-sm bg-muted shadow-none border">
                 <CardHeader>
                     <CardTitle>Register</CardTitle>
                     <CardDescription>

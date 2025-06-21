@@ -51,7 +51,7 @@ const LoginCard = () => {
 
     return (
         <div className="w-full p-0 space-y-4 transition-all duration-300 rounded-xl">
-            <Card className="w-full max-w-sm bg-white border shadow-none">
+            <Card className="w-full max-w-sm bg-muted border shadow-none">
                 <CardHeader>
                     <CardTitle>Login</CardTitle>
                     <CardDescription>
