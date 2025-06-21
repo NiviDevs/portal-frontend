@@ -13,7 +13,7 @@ import {
     DockIcon,
     DockLabel,
 } from "@/components/motion-primitives/dock";
-
+import ThemeToggle from "./ThemeToggle";
 const BottomNav = () => {
     const { user, ready } = useAuth();
     if (!ready) return null;
@@ -35,23 +35,19 @@ const BottomNav = () => {
                 {!user ? (
                     <Link to="/auth">
                         <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
-
                             <DockLabel>Login</DockLabel>
                             <DockIcon>
                                 <UserIcon className="w-full h-full text-neutral-600 dark:text-neutral-300" />
                             </DockIcon>
                         </DockItem>
                     </Link>
-                ) : (              
-                        <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
-                            
-                            <DockLabel>Login</DockLabel>
-                            <DockIcon>
-                        <UserPopover />
-
-                            </DockIcon>
-                        </DockItem>
-
+                ) : (
+                    <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
+                        <DockLabel>Login</DockLabel>
+                        <DockIcon>
+                            <UserPopover />
+                        </DockIcon>
+                    </DockItem>
                 )}
 
                 {/* Dashboard */}
@@ -73,6 +69,13 @@ const BottomNav = () => {
                         </DockIcon>
                     </DockItem>
                 </Link>
+
+                <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
+                    <DockLabel>Theme</DockLabel>
+                    <DockIcon>
+                        <ThemeToggle></ThemeToggle>
+                    </DockIcon>
+                </DockItem>
             </Dock>
         </div>
     );
