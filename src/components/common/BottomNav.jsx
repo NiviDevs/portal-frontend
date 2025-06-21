@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
     HomeIcon,
     UserIcon,
@@ -8,45 +7,73 @@ import {
 import { Link } from "react-router-dom";
 import UserPopover from "./UserPopover";
 import { useAuth } from "@/context/AuthContext";
+import {
+    Dock,
+    DockItem,
+    DockIcon,
+    DockLabel,
+} from "@/components/motion-primitives/dock";
 
 const BottomNav = () => {
     const { user, ready } = useAuth();
-
-    if (!ready) return null; // 🧠 wait for auth to finish
+    if (!ready) return null;
 
     return (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/30 backdrop-blur-md shadow-lg rounded-full px-4 py-2 flex gap-2 items-center border border-white/20 outline-2">
-            <Link to="/">
-                <Button variant="ghost" size="icon" className="text-foreground">
-                    <HomeIcon className="w-5 h-5" />
-                </Button>
-            </Link>
-
-            {!user ? (
-                <Link to="/auth">
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-foreground"
-                    >
-                        <UserIcon className="w-5 h-5" />
-                    </Button>
+        <div className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 max-w-full">
+            <Dock className="items-end pb-3">
+                {/* Home */}
+                <Link to="/">
+                    <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
+                        <DockLabel>Home</DockLabel>
+                        <DockIcon>
+                            <HomeIcon className="w-full h-full text-neutral-600 dark:text-neutral-300" />
+                        </DockIcon>
+                    </DockItem>
                 </Link>
-            ) : (
-                <UserPopover />
-            )}
 
-            <Link to="/dashboard">
-                <Button variant="ghost" size="icon" className="text-foreground">
-                    <LayoutListIcon className="w-5 h-5" />
-                </Button>
-            </Link>
+                {/* Auth or Profile */}
+                {!user ? (
+                    <Link to="/auth">
+                        <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
 
-            <Link to="/about">
-                <Button variant="ghost" size="icon" className="text-foreground">
-                    <BadgeInfoIcon className="w-5 h-5" />
-                </Button>
-            </Link>
+                            <DockLabel>Login</DockLabel>
+                            <DockIcon>
+                                <UserIcon className="w-full h-full text-neutral-600 dark:text-neutral-300" />
+                            </DockIcon>
+                        </DockItem>
+                    </Link>
+                ) : (              
+                        <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
+                            
+                            <DockLabel>Login</DockLabel>
+                            <DockIcon>
+                        <UserPopover />
+
+                            </DockIcon>
+                        </DockItem>
+
+                )}
+
+                {/* Dashboard */}
+                <Link to="/dashboard">
+                    <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
+                        <DockLabel>Dashboard</DockLabel>
+                        <DockIcon>
+                            <LayoutListIcon className="w-full h-full text-neutral-600 dark:text-neutral-300" />
+                        </DockIcon>
+                    </DockItem>
+                </Link>
+
+                {/* About */}
+                <Link to="/about">
+                    <DockItem className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800">
+                        <DockLabel>About</DockLabel>
+                        <DockIcon>
+                            <BadgeInfoIcon className="w-full h-full text-neutral-600 dark:text-neutral-300" />
+                        </DockIcon>
+                    </DockItem>
+                </Link>
+            </Dock>
         </div>
     );
 };

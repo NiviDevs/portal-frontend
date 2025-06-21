@@ -3,12 +3,11 @@ import {
     PopoverTrigger,
     PopoverContent,
 } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
 import { LogOut, UserIcon } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-
-const UserPopover = () => {
+import { Button } from "../ui/button";
+const UserPopover = ({ className }) => {
     const { user, logout, ready } = useAuth();
     const [open, setOpen] = useState(false);
 
@@ -18,23 +17,22 @@ const UserPopover = () => {
             navigator.maxTouchPoints > 0 ||
             navigator.msMaxTouchPoints > 0);
 
-    if (!ready || !user) return null; // ✅ block until user fully loaded
+    if (!ready || !user) return null;
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-foreground"
+                <div
+                    className={`cursor-pointer flex items-center justify-center ${className}`}
                     onMouseEnter={() => !isTouch && setOpen(true)}
                     onMouseLeave={() =>
                         !isTouch && setTimeout(() => setOpen(false), 200)
                     }
                     onClick={() => isTouch && setOpen((prev) => !prev)}
                 >
-                    <UserIcon className="w-5 h-5" />
-                </Button>
+
+                        <UserIcon className="w-full h-full text-neutral-600 dark:text-neutral-300" />
+                </div>
             </PopoverTrigger>
 
             <PopoverContent
@@ -60,7 +58,7 @@ const UserPopover = () => {
                     variant="outline"
                     className="w-full flex items-center justify-center gap-2"
                 >
-                    <LogOut className="w-4 h-4 stroke-muted-foreground" />{" "}
+                    <LogOut className="w-4 h-4 stroke-muted-foreground" />
                     Logout
                 </Button>
             </PopoverContent>
