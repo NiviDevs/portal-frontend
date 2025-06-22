@@ -18,7 +18,7 @@ function App() {
                     <Route path="/dashboard" Component={DashboardPage}></Route>
                 </Routes>
                 <BottomNav/>
-                <Toaster position="top-right" />
+                <Toaster position="top-left" />
             </ThemeProvider>
         </>
     );

@@ -52,12 +52,12 @@ const LoginCard = () => {
     return (
         <div className="w-full p-0 space-y-4 transition-all duration-300 rounded-xl">
             <Card className="w-full max-w-sm bg-muted border shadow-none">
-                <CardHeader>
+                {/* <CardHeader>
                     <CardTitle>Login</CardTitle>
                     <CardDescription>
                         Enter your credentials to login to your account
                     </CardDescription>
-                </CardHeader>
+                </CardHeader> */}
                 <CardContent>
                     <Form {...form}>
                         <form

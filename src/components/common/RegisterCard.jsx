@@ -63,12 +63,12 @@ const RegisterCard = () => {
     return (
         <div className="w-full p-0 rounded-xl space-y-4 transition-all duration-300">
             <Card className="w-full max-w-sm bg-muted shadow-none border">
-                <CardHeader>
+                {/* <CardHeader>
                     <CardTitle>Register</CardTitle>
                     <CardDescription>
                         Enter your details to sign up for an account
                     </CardDescription>
-                </CardHeader>
+                </CardHeader> */}
                 <CardContent>
                     <Form {...form}>
                         <form
