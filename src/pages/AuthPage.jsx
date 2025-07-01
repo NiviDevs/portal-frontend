@@ -7,8 +7,7 @@ import {
 	TabsList,
 	TabsTrigger,
 } from "@/components/animate-ui/radix/tabs";
-import LoginCard from "@/components/common/LoginCard";
-import RegisterCard from "@/components/common/RegisterCard";
+import { LoginCard, RegisterCard } from "../components/common/AuthCards";
 
 export default function AuthPage() {
 	const navigate = useNavigate();

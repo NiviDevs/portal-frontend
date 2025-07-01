@@ -1,20 +1,19 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LogInIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
 import { loginUser } from "@/lib/api";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Gift } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { Card, CardContent, CardFooter } from "../ui/card";
 import { loginSchema } from "./schemas/authSchema";
 
 const LoginCard = () => {
@@ -43,14 +42,8 @@ const LoginCard = () => {
 	});
 
 	return (
-		<Card className="p-0 w-full bg-transparent border-0 shadow-none">
-			{/* <CardHeader>
-                    <CardTitle>Login</CardTitle>
-                    <CardDescription>
-                        Enter your credentials to login to your account
-                    </CardDescription>
-                </CardHeader> */}
-			<CardContent>
+		<div className="p-0 w-full bg-transparent border-0 shadow-none">
+
 				<Form {...form}>
 					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
 						<FormField
@@ -82,14 +75,11 @@ const LoginCard = () => {
 						</Button>
 					</form>
 				</Form>
-			</CardContent>
-			<CardFooter>
 				<Button variant="outline" className="w-full text-center ">
-					<Gift />
+					<LogInIcon />
 					or use Google
 				</Button>
-			</CardFooter>
-		</Card>
+		</div>
 	);
 };
 
