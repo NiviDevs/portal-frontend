@@ -43,7 +43,7 @@ const TopNav = () => {
 						<Link key="Register" to="/auth" data-id="Register">
 							<Button
 								variant={
-									location.pathname.startsWith("/auth") ? "secondary" : "ghost"
+									location.pathname.startsWith("/auth") ? "secondary" : "link"
 								}
 								className="text-sm font-medium font-mono px-4 py-1 rounded-full"
 							>
