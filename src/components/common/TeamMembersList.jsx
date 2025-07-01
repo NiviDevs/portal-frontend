@@ -1,20 +1,18 @@
+import { CrownIcon, Trash2Icon } from "lucide-react";
+import { toast } from "react-hot-toast";
 import {
     AlertDialog,
-    AlertDialogTrigger,
+    AlertDialogAction,
+    AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogHeader,
-    AlertDialogTitle,
     AlertDialogDescription,
     AlertDialogFooter,
-    AlertDialogCancel,
-    AlertDialogAction,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { deleteTeam } from "@/lib/teamApi";
-  
 import { useAuth } from "@/context/AuthContext";
-import { toast } from "react-hot-toast";
-import { Trash2Icon, CrownIcon } from "lucide-react";
-import { leaveTeam, kickMember } from "@/lib/teamApi";
+import { deleteTeam, kickMember, leaveTeam } from "@/lib/teamApi";
 
 const TeamMembersList = ({ team, refreshTeam }) => {
     const { user } = useAuth();
@@ -97,7 +95,7 @@ const TeamMembersList = ({ team, refreshTeam }) => {
                 >
                     Leave Team
                 </button>
-                {/*the next 50 LOC is just conditional rendering of a damn dialog*/ }
+                {/*the next 40 LOC are just conditional rendering of a damn dialog*/ }
                 {isLeader && (
                     <AlertDialog>
                         <AlertDialogTrigger className="bg-[--primary] text-[--primary-foreground] px-4 py-2 rounded hover:opacity-90 transition">

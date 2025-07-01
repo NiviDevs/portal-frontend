@@ -1,19 +1,20 @@
 import {
-    HomeIcon,
-    UserIcon,
-    LayoutListIcon,
     BadgeInfoIcon,
+    HomeIcon,
+    LayoutListIcon,
+    UserIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import UserPopover from "./UserPopover";
-import { useAuth } from "@/context/AuthContext";
 import {
     Dock,
-    DockItem,
     DockIcon,
+    DockItem,
     DockLabel,
 } from "@/components/motion-primitives/dock";
+import { useAuth } from "@/context/AuthContext";
 import ThemeToggle from "./ThemeToggle";
+import UserPopover from "./UserPopover";
+
 const BottomNav = () => {
     const { user, ready } = useAuth();
     if (!ready) return null;

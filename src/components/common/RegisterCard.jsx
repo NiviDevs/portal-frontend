@@ -15,10 +15,7 @@ import { toast } from "react-hot-toast";
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
-    CardHeader,
-    CardTitle,
 } from "../ui/card";
 import { registerSchema } from "./schemas/authSchema";
 import { useNavigate } from "react-router-dom";
@@ -61,8 +58,7 @@ const RegisterCard = () => {
     });
 
     return (
-        <div className="w-full p-0 rounded-xl space-y-4 transition-all duration-300">
-            <Card className="w-full max-w-sm bg-muted shadow-none border">
+            <Card className="w-full max-w-sm bg-muted shadow-none">
                 {/* <CardHeader>
                     <CardTitle>Register</CardTitle>
                     <CardDescription>
@@ -168,7 +164,6 @@ const RegisterCard = () => {
                     </Button>
                 </CardFooter>
             </Card>
-        </div>
     );
 };
 
