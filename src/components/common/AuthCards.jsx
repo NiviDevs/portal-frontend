@@ -4,17 +4,22 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
 import { loginUser, registerUser } from "@/lib/api";
+import { RainbowButton } from "../magicui/rainbow-button";
 import { loginSchema, registerSchema } from "./schemas/authSchema";
+
+const inputClasses = `
+  bg-white/10
+  border border-black/30 dark:border-white/30
+  text-black dark:text-white
+  placeholder:text-black/70 dark:placeholder:text-white/70
+  focus:outline-none focus:ring-1
+  focus:ring-black/70 dark:focus:ring-white/70
+  rounded-md
+`;
 
 export const LoginCard = () => {
 	const navigate = useNavigate();
@@ -41,42 +46,58 @@ export const LoginCard = () => {
 	};
 
 	return (
-		<div className="w-full max-w-sm space-y-4">
+		<div className="w-full max-w-sm space-y-3">
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
 					<FormField
 						control={form.control}
 						name="regId"
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder="Reg No." {...field} />
+									<Input
+										placeholder="Reg No."
+										className={inputClasses}
+										{...field}
+									/>
 								</FormControl>
-								<FormMessage />
 							</FormItem>
 						)}
 					/>
 
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input type="password" placeholder="Password" {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
+					<div className="flex space-x-2">
+						<FormField
+							control={form.control}
+							name="password"
+							render={({ field }) => (
+								<FormItem className="w-full">
+									<FormControl>
+										<Input
+											type="password"
+											placeholder="Password"
+											className={inputClasses}
+											{...field}
+										/>
+									</FormControl>
+								</FormItem>
+							)}
+						/>
 
-					<Button type="submit" className="w-full">
-						Log In
-					</Button>
+						<RainbowButton
+							type="submit"
+							className="w-fit rounded-md"
+							variant="outline"
+						>
+							Login
+						</RainbowButton>
+					</div>
 				</form>
 			</Form>
 
-			<Button variant="outline" className="w-full">
+			<Button
+				variant="outline"
+				className="w-full bg-white/20 dark:bg-black/20 text-white"
+			>
 				<LogInIcon className="mr-2 h-4 w-4" /> Continue with Google
 			</Button>
 		</div>
@@ -119,9 +140,9 @@ export const RegisterCard = () => {
 	};
 
 	return (
-		<div className="w-full max-w-sm space-y-4">
+		<div className="w-full max-w-sm space-y-3">
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
 					<div className="flex space-x-2">
 						<FormField
 							control={form.control}
@@ -129,9 +150,12 @@ export const RegisterCard = () => {
 							render={({ field }) => (
 								<FormItem className="w-full">
 									<FormControl>
-										<Input placeholder="First Name" {...field} />
+										<Input
+											placeholder="First Name"
+											className={inputClasses}
+											{...field}
+										/>
 									</FormControl>
-									<FormMessage />
 								</FormItem>
 							)}
 						/>
@@ -142,60 +166,84 @@ export const RegisterCard = () => {
 							render={({ field }) => (
 								<FormItem className="w-full">
 									<FormControl>
-										<Input placeholder="Last Name" {...field} />
+										<Input
+											placeholder="Last Name"
+											className={inputClasses}
+											{...field}
+										/>
 									</FormControl>
-									<FormMessage />
 								</FormItem>
 							)}
 						/>
 					</div>
 
-					<FormField
-						control={form.control}
-						name="regId"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input placeholder="Reg No." {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
+					<div className="flex space-x-2">
+						<FormField
+							control={form.control}
+							name="regId"
+							render={({ field }) => (
+								<FormItem className="w-1/4">
+									<FormControl>
+										<Input
+											placeholder="Reg No."
+											className={inputClasses}
+											{...field}
+										/>
+									</FormControl>
+								</FormItem>
+							)}
+						/>
 
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input placeholder="Email" {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
+						<FormField
+							control={form.control}
+							name="email"
+							render={({ field }) => (
+								<FormItem className="w-3/4">
+									<FormControl>
+										<Input
+											placeholder="Email"
+											className={inputClasses}
+											{...field}
+										/>
+									</FormControl>
+								</FormItem>
+							)}
+						/>
+					</div>
 
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input type="password" placeholder="Password" {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
+					<div className="flex space-x-2">
+						<FormField
+							control={form.control}
+							name="password"
+							render={({ field }) => (
+								<FormItem className="w-full">
+									<FormControl>
+										<Input
+											type="password"
+											placeholder="Password"
+											className={inputClasses}
+											{...field}
+										/>
+									</FormControl>
+								</FormItem>
+							)}
+						/>
 
-					<Button type="submit" className="w-full">
-						Register
-					</Button>
+						<RainbowButton
+							type="submit"
+							className="w-fit rounded-md"
+							variant="outline"
+						>
+							Register
+						</RainbowButton>
+					</div>
 				</form>
 			</Form>
 
-			<Button variant="outline" className="w-full">
+			<Button
+				variant="outline"
+				className="w-full bg-white/20 dark:bg-black/20 text-white"
+			>
 				<Gift className="mr-2 h-4 w-4" /> Continue with Google
 			</Button>
 		</div>

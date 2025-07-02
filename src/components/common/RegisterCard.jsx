@@ -53,107 +53,97 @@ const RegisterCard = () => {
     });
 
     return (
-            <div className="w-full max-w-sm bg-muted shadow-none">
-                <div>
-                    <Form {...form}>
-                        <form
-                            onSubmit={form.handleSubmit(onSubmit)}
-                            className="space-y-4"
-                        >
-                            <div className="flex space-x-2">
-                                <FormField
-                                    control={form.control}
-                                    name="firstname"
-                                    render={({ field }) => (
-                                        <FormItem className="w-full">
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="First Name"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="lastname"
-                                    render={({ field }) => (
-                                        <FormItem className="w-full">
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Last Name"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <FormField
-                                control={form.control}
-                                name="regId"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="Reg No."
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="Email"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="password"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormControl>
-                                            <Input
-                                                type="password"
-                                                placeholder="Password"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <Button type="submit" className="w-full">
-                                Submit
-                            </Button>
-                        </form>
-                    </Form>
-                </div>
-                <div>
-                    <Button
-                        variant="outline"
-                        className="min-w-max text-center w-full"
-                    >
-                        <Gift /> or use Google
-                    </Button>
-                </div>
-            </div>
-    );
+					<div className="w-full max-w-sm bg-muted shadow-none">
+						<div>
+							<Form {...form}>
+								<form
+									onSubmit={form.handleSubmit(onSubmit)}
+									className="space-y-3"
+								>
+									<div className="flex space-x-2">
+										<FormField
+											control={form.control}
+											name="firstname"
+											render={({ field }) => (
+												<FormItem className="w-full">
+													<FormControl>
+														<Input placeholder="First Name" {...field} />
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+										<FormField
+											control={form.control}
+											name="lastname"
+											render={({ field }) => (
+												<FormItem className="w-full">
+													<FormControl>
+														<Input placeholder="Last Name" {...field} />
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+									</div>
+									<div className="flex space-x-2">
+										<FormField
+											control={form.control}
+											name="regId"
+											render={({ field }) => (
+												<FormItem className="w-full">
+													<FormControl>
+														<Input placeholder="Reg No." {...field} />
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+										<FormField
+											control={form.control}
+											name="email"
+											render={({ field }) => (
+												<FormItem className="w-full">
+													<FormControl>
+														<Input placeholder="Email" {...field} />
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+									</div>
+									<FormField
+										control={form.control}
+										name="password"
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<Input
+														type="password"
+														placeholder="Password"
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<Button type="submit" className="w-full">
+										Submit
+									</Button>
+								</form>
+							</Form>
+						</div>
+						<div>
+							<Button
+								variant="outline"
+								className="min-w-max text-center w-full"
+							>
+								<Gift /> or use Google
+							</Button>
+						</div>
+					</div>
+				);
 };
 
 export default RegisterCard;

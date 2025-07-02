@@ -17,12 +17,12 @@ const TopNav = () => {
 	];
 
 	return (
-		<div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 backdrop-blur-sm bg-background/20 border border-background/20 shadow-lg rounded-full px-2 py-2 max-w-fit flex items-center space-x-4">
+		<div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 backdrop-blur-sm border bg-background/20  border-black/20 shadow-lg rounded-full px-2 py-2 max-w-fit flex items-center space-x-4 dark:border-stone-300/30">
 			{/* Centered Nav Items */}
 			<div className="flex items-center space-x-2 rounded-full">
 				<AnimatedBackground
 					className="bg-muted/30 p-1 rounded-full"
-					transition={{ type: "spring", bounce: 0.2, duration: 0.3 }}
+					transition={{ type: "spring", bounce: 0.2, duration: 0.1 }}
 				>
 					{tabs.map((tab) => {
 						const isActive =
@@ -32,7 +32,7 @@ const TopNav = () => {
 							<Link key={tab.label} to={tab.to} data-id={tab.label}>
 								<Button
 									variant={isActive ? "secondary" : "link"}
-									className="text-sm font-medium font-mono px-4 py-1 rounded-full"
+									className="text-sm font-medium font-mono px-4 py-1 rounded-full  "
 								>
 									{tab.label}
 								</Button>
@@ -45,9 +45,9 @@ const TopNav = () => {
 								variant={
 									location.pathname.startsWith("/auth") ? "secondary" : "link"
 								}
-								className="text-sm font-medium font-mono px-4 py-1 rounded-full"
+								className="text-sm font-medium font-mono px-4 py-1 rounded-full  "
 							>
-								Register
+								Login
 							</Button>
 						</Link>
 					) : (

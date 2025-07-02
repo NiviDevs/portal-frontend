@@ -4,10 +4,9 @@ import "./App.css";
 import TopNav from "./components/common/TopNav";
 import { ThemeProvider } from "./components/theme-provider";
 import AboutPage from "./pages/AboutPage";
-import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
 import LandingPage from "./pages/LandingPage";
-import TestPage from "./testing/TestPage";
+import NewAuthPage from "./pages/NewAuthPage";
 
 function App() {
 	return (
@@ -16,10 +15,9 @@ function App() {
 				<TopNav />
 				<Routes>
 					<Route path="" element={<LandingPage />}></Route>
-					<Route path="/auth" element={<AuthPage />}></Route>
+					<Route path="/auth" element={<NewAuthPage />}></Route>
 					<Route path="/about" element={<AboutPage />}></Route>
 					<Route path="/dashboard" element={<DashboardPage />}></Route>
-					<Route path="/test" element={<TestPage />}></Route>
 				</Routes>
 				{/* <BottomNav/> */}
 				<Toaster position="top-left" />
