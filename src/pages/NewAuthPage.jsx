@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import authbg from "../assets/authbg.webp"; import lightauthbg from "../assets/lightauthbg.webp"
+import authbg from "../assets/dark auth back.webp";
+import lightauthbg from "../assets/light auth back.webp";
 import { LoginCard, RegisterCard } from "../components/common/AuthCards";
-import { useTheme } from "../components/theme-provider";
-import { TextAnimate } from "../components/magicui/text-animate";
 import { BlurFade } from "../components/magicui/blur-fade";
+import { TextAnimate } from "../components/magicui/text-animate";
+import { useTheme } from "../components/theme-provider";
 
 const NewAuthPage = () => {
 	const [mode, setMode] = useState("login");
@@ -17,14 +18,13 @@ const NewAuthPage = () => {
 				<div
 					className="absolute -inset-2 rounded-3xl
                     bg-gradient-to-br
-                    from-orange-600 to-slate-600
-                    dark:from-cyan-600 dark:to-amber-500
-                    dark:bg-gradient-to-b
+                    from-blue-600 to-slate-600
+                    dark:from-cyan-600 dark:to-blue-500
 
                     md:bg-gradient-to-br
-                    md:dark:bg-gradient-to-r
-                    md:from-pink-900 md:via-sky-500 md:to-stone-800
-                md:dark:from-amber-600 md:dark:via-cyan-500 md:dark:to-orange-400 
+                    md:dark:bg-gradient-to-b
+                    md:from-sky-500  md:to-blue-800
+                md:dark:from-cyan-600 md:dark:via-orange-500 md:dark:to-blue-700 
                 opacity-100 blur-xl z-0
                 dark:blur-3xl dark:opacity-40
                 "
@@ -32,15 +32,15 @@ const NewAuthPage = () => {
 
 				{/* this boi wraps the real shi */}
 				<div
-					className="relative w-full h-full rounded-3xl overflow-hidden flex flex-col md:flex-row md:items-center md:justify-center z-10"
+					className=" relative w-full h-full rounded-3xl overflow-hidden flex flex-col md:flex-row md:items-center md:justify-center z-10"
 					style={{
-						backgroundImage: `linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url(${theme === "dark" ? authbg : lightauthbg})`,
+						backgroundImage: `url(${theme === "dark" ? authbg : lightauthbg}`,
 						backgroundSize: "cover",
 						backgroundPosition: "center",
 					}}
 				>
 					{/* the real shi */}
-					<div className="w-full md:w-1/2 h-full px-8 py-10 flex flex-col justify-center bg-black/30 backdrop-blur-md items-center md:items-start">
+					<div className="w-full md:w-1/2 h-full px-8 py-10 flex flex-col justify-center dark:bg-black/60 backdrop-blur-xl items-center md:items-start">
 						
                         <TextAnimate  animation='blurInUp' by='word' as='h2' className="text-3xl font-bold mb-2 font-mono text-white text-center md:text-start">
 							{mode === "login" ? "Welcome back." : "Create an account."}
@@ -75,7 +75,7 @@ const NewAuthPage = () => {
 					</div>
 
 					{/* spacing because idk how to use masks */}
-					<div className="hidden md:block md:w-1/2 h-full" />
+					<div className="hidden md:block dark:bg-black/60 md:w-1/2 h-full" />
 				</div>
 			</div>
 		</BlurFade>
