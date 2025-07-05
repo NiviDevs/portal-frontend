@@ -12,13 +12,23 @@ import { RainbowButton } from "../magicui/rainbow-button";
 import { loginSchema, registerSchema } from "./schemas/authSchema";
 
 const inputClasses = `
-  bg-white/10
+  bg-black/10
   border border-black/30 dark:border-white/30
-  text-black dark:text-white
-  placeholder:text-black/70 dark:placeholder:text-white/70
+  text-white/100 dark:text-white
+  placeholder:text-white/50 dark:placeholder:text-white/70
   focus:outline-none focus:ring-1
-  focus:ring-black/70 dark:focus:ring-white/70
+  focus:ring-0 dark:focus:ring-0
   rounded-md
+  aria-invalid:bg-red-500/50
+  aria-invalid:placeholder:text-red-300
+  dark:aria-invalid:placeholder:text-red-300
+  dark:aria-invalid:bg-red-500/40
+  aria-invalid:ring-black
+  transition-colors
+  duration-300
+  aria-invalid:border-black
+  
+  
 `;
 
 export const LoginCard = () => {
