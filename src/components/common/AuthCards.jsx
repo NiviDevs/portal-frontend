@@ -27,7 +27,7 @@ const inputClasses = `
   transition-colors
   duration-300
   aria-invalid:border-black
-  
+  placeholder:text-sm
   
 `;
 
