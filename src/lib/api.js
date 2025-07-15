@@ -1,7 +1,12 @@
 import axios from "axios";
 
 
-export const BASE_URL = "http://localhost:5000/api";
+var onlineMode = false;
+//for testing use localhost else use the one hosted on render
+
+export const BASE_URL = onlineMode
+    ? "https://portal-backend-gkgu.onrender.com/api"
+    : "http://localhost:5000/api";
 
 export const loginUser = async (data) => {
     return axios.post(`${BASE_URL}/auth/login`, data, {
