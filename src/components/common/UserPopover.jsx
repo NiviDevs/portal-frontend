@@ -21,11 +21,11 @@ const UserPopover = ({ className = "", variant = "link", children }) => {
 	if (!ready || !user) return null;
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
+		<Popover  open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
 				<Button
 					variant={variant}
-					className={`text-sm font-medium font-mono px-4 py-1 rounded-full ${className}`}
+					className={`text-sm font-medium font-mono px-4 py-1  rounded-full ${className}`}
 					onMouseEnter={() => !isTouch && setOpen(true)}
 					onMouseLeave={() => !isTouch && setTimeout(() => setOpen(false), 200)}
 					onClick={() => isTouch && setOpen((prev) => !prev)}
@@ -37,6 +37,7 @@ const UserPopover = ({ className = "", variant = "link", children }) => {
 			<PopoverContent
 				align="center"
 				side="top"
+                sideOffset={9}
 				className="p-3 space-y-2 text-center"
 				style={{ width: "fit-content" }}
 				onMouseEnter={() => !isTouch && setOpen(true)}
