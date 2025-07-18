@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useAuth } from "@/context/AuthContext";
-// import { getTeamInfo } from "@/lib/teamApi";
-import { getTeamInfo } from "../lib/teamApi";
+import { getTeamInfo } from "@/lib/teamApi";
 
-const DashboardPage = () => {
+const TestPage = () => {
 	const { user, ready } = useAuth();
 	const [team, setTeam] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -14,7 +13,7 @@ const DashboardPage = () => {
 			(async () => {
 				try {
 					setLoading(true);
-					const data = await getTeamInfo();
+					const data = await getTeamInfo(user.regId);
 					setTeam(data);
 				} catch (err) {
 					if (err.response?.status === 404) {
@@ -64,7 +63,7 @@ const DashboardPage = () => {
 								{team.members.map((member) => (
 									<div
 										key={member.regId}
-										className="flex items-center gap-2 bg-muted p-2 rounded-lg w-full"
+										className="flex items-center gap-2 bg-muted p-2 rounded-lg"
 									>
 										<div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold text-sm uppercase">
 											{member.name
@@ -159,4 +158,4 @@ const DashboardPage = () => {
 	);
 };
 
-export default DashboardPage;
+export default TestPage;

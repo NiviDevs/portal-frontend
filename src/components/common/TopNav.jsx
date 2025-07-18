@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import ThemeToggle from "@/components/common/ThemeToggle"; // adjust path if needed
+import ThemeToggle from "@/components/common/ThemeToggle"; 
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
@@ -9,7 +9,7 @@ const TopNav = () => {
 	const { user, ready } = useAuth();
 	const location = useLocation();
 	if (!ready) return null;
-
+    if(location.pathname.includes('login') || location.pathname.includes('register')) return null;
 	const tabs = [
 		{ label: "Home", to: "/" },
 		{ label: "About", to: "/about" },
@@ -40,10 +40,13 @@ const TopNav = () => {
 						);
 					})}
 					{!user ? (
-						<Link key="Register" to="/auth" data-id="Register">
+						<Link key="Login" to="/login" data-id="login">
 							<Button
 								variant={
-									location.pathname.startsWith("/auth") ? "secondary" : "link"
+									location.pathname.startsWith("/login") ||
+									location.pathname.startsWith("/register")
+										? "secondary"
+										: "link"
 								}
 								className="text-sm font-medium font-mono px-4 py-1 rounded-full  "
 							>

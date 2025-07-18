@@ -2,8 +2,8 @@ import axios from "axios";
 import { BASE_URL } from "./api";
 
 
-export const getTeamInfo = async (regId) => {
-    const res = await axios.get(`${BASE_URL}/team/info/${regId}`, {
+export const getTeamInfo = async () => {
+    const res = await axios.get(`${BASE_URL}/team/info`, {
         withCredentials: true,
     });
     return res.data;
@@ -49,4 +49,3 @@ export const deleteTeam = async () => {
     const res = await axios.post( `${BASE_URL}/team/delete`, {}, { withCredentials: true });
     return res.data;
 };
-  
