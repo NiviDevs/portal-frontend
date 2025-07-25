@@ -3,6 +3,10 @@
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
+body{
+    scroll-behavior: smooth;
+}
+
 @theme inline {
     --font-polt: "Poltawski Nowy", serif;
     --radius-sm: calc(var(--radius) - 4px);

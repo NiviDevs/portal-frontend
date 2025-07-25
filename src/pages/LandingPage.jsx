@@ -1,19 +1,51 @@
-import { BlurFade } from "../components/magicui/blur-fade";
-import { FlickeringGrid } from "../components/magicui/flickering-grid";
+import React from "react";
+import { Link } from "react-router-dom";
+import backgroundImage from "../assets/imperium-bg.png"; // Check path is correct
 
-export default function LandingPage() {
-	return (
-		<BlurFade className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-blue-600 via-cyan-300 to-sky-500">
-			<FlickeringGrid
-				className="z-[-1]"
-				squareSize={13}
-				gridGap={6}
-				color="#000000"
-				maxOpacity={0.3}
-				flickerChance={0.2}
-				height={window.innerHeight}
-				width={window.innerWidth}
-			/>
-		</BlurFade>
-	);
-}
+const LandingPage = () => {
+    return (
+        <div className="relative h-screen w-full">
+            {/* Background */}
+            <div
+                className="absolute inset-0 bg-cover bg-center z-0"
+                style={{ backgroundImage: `url(${backgroundImage})` }}
+            />
+
+            {/* Blue overlay */}
+            <div className="absolute inset-0 bg-blue-950/60 z-10" />
+
+            {/* Content */}
+            <div className="relative z-20 flex items-center h-full px-6 sm:px-10 md:px-0">
+                <div className="text-white w-full md:pl-20 md:text-left text-center">
+                    {/* pixelate - Sans-serif */}
+                    <h1 className="text-4xl sm:text-5xl font-extrabold mb-2 tracking-tight font-sans">
+                        pixelate
+                    </h1>
+
+                    {/* IMPERIUM 2025 - Serif */}
+                    <h2 className="text-6xl sm:text-7xl md:text-8xl font-serif font-extrabold mb-3 leading-tight">
+                        IMPERIUM 2025
+                    </h2>
+
+                    {/* Subtitle - Serif */}
+                    <p className="text-2xl sm:text-3xl font-serif leading-snug mb-6">
+                        innovate for inclusion
+                    </p>
+
+                    {/* Register button - Serif */}
+                    <div className="md:text-left text-center">
+                        <Link
+                            to="/register"
+                            className="inline-block px-8 py-3 border border-white rounded-full text-white font-serif text-lg hover:bg-white hover:text-blue-900 transition duration-300"
+                        >
+                            register
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LandingPage;
+
