@@ -11,7 +11,7 @@ import { useAuth } from "@/context/AuthContext";
 import { loginUser, registerUser } from "@/lib/api";
 import { loginSchema, registerSchema } from "./schemas/authSchema";
 
-const inputClasses = `bg-black/10 border border-black/30 dark:border-white/30 text-white/100 dark:text-white placeholder:text-white/50 dark:placeholder:text-white/70 focus:outline-none focus:ring-0 dark:focus:ring-0 rounded-md aria-invalid:bg-red-500/50 aria-invalid:placeholder:text-red-300 dark:aria-invalid:placeholder:text-red-300 dark:aria-invalid:bg-red-500/40 aria-invalid:ring-black transition-colors duration-300 aria-invalid:border-black placeholder:text-sm`;
+const inputClasses = `bg-black/10 border border-black/90 border-1 dark:border-white/40 text-white/100 dark:text-white placeholder:text-black/50 placeholder:font-polt dark:placeholder:text-white/50 focus-visible:outline-0 focus-visible:ring-0 focus-visible:border-0 text-black font-polt dark:focus-visible:ring-0 rounded-md focus-visible:bg-black/20 aria-invalid:bg-blue-900/20 aria-invalid:placeholder:text-black/70 dark:aria-invalid:placeholder:text-red-300 dark:aria-invalid:bg-red-500/40 aria-invalid:ring-black transition-colors duration-150 aria-invalid:border-black placeholder:text-sm`;
 
 export const LoginCard = () => {
     const navigate = useNavigate();
@@ -85,12 +85,12 @@ export const LoginCard = () => {
                         <Button
                             type="submit"
                             variant="outline"
-                            className="w-fit rounded-md"
+                            className="rounded-md w-fit"
                             disabled={loading}
                         >
                             {loading ? (
                                 <span className="flex items-center gap-2">
-                                    <Loader2 className="animate-spin w-4 h-4" />
+                                    <Loader2 className="w-4 h-4 animate-spin" />
                                     Login
                                 </span>
                             ) : (
@@ -106,9 +106,9 @@ export const LoginCard = () => {
 
             <Button
                 variant="outline"
-                className="w-full bg-white/20 dark:bg-black/20 text-white"
+                className="w-full text-white bg-white/20 dark:bg-black/20"
             >
-                <LogInIcon className="mr-2 h-4 w-4" /> Continue with Google
+                <LogInIcon className="w-4 h-4 mr-2" /> Continue with Google
             </Button>
         </div>
     );
@@ -249,16 +249,16 @@ export const RegisterCard = () => {
                         <Button
                             type="submit"
                             variant="outline"
-                            className="w-fit rounded-md"
+                            className="bg-[#05102d] dark:bg-[#fff7e3] hover:bg-[#3a4a76] rounded-md w-fit"
                             disabled={loading}
                         >
                             {loading ? (
-                                <span className="flex items-center gap-2">
-                                    <Loader2 className="animate-spin w-4 h-4" />
+                                <span className="flex items-center gap-2 dark:text-black text-white font-polt">
+                                    <Loader2 className="w-4 h-4 animate-spin" />
                                     Register
                                 </span>
                             ) : (
-                                <span className="flex items-center gap-2">
+                                <span className="flex items-center gap-2 dark:text-black text-white font-polt">
                                     <LogInIcon className="w-4 h-4" />
                                     Register
                                 </span>
@@ -270,9 +270,10 @@ export const RegisterCard = () => {
 
             <Button
                 variant="outline"
-                className="w-full bg-white/20 dark:bg-black/20 text-white"
+                className="w-full text-white bg-white/20 dark:bg-black/20"
             >
-                <Gift className="mr-2 h-4 w-4" /> Continue with Google
+                <Gift className="w-4 h-4 mr-2" />{" "}
+                <p className="font-polt">Continue with Google</p>
             </Button>
         </div>
     );

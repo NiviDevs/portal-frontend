@@ -11,28 +11,17 @@ const NewAuthPage = () => {
 	const [mode, setMode] = useState("login");
     const {theme} = useTheme();
 	return (
-		<BlurFade className="min-h-screen w-full flex items-center justify-center bg-background px-2">
+		<BlurFade className="flex items-center justify-center w-full min-h-screen px-2 bg-background">
 			{/* Gradient Shadow Wrapper copied from some random website lmaooo */}
 			<div className="relative w-full max-w-4xl h-[70vh]">
 				{/* this was adding shadow and shi */}
 				<div
-					className="absolute -inset-2 rounded-3xl
-                    bg-gradient-to-br
-                    from-blue-600 to-slate-600
-                    dark:from-cyan-600 dark:to-blue-500
-
-                    md:bg-gradient-to-br
-                    md:dark:bg-gradient-to-b
-                    md:from-sky-500  md:to-blue-800
-                md:dark:from-cyan-600 md:dark:via-orange-500 md:dark:to-blue-700 
-                opacity-100 blur-xl z-0
-                dark:blur-3xl dark:opacity-40
-                "
+					className="absolute z-0 opacity-100 -inset-2 dark:opacity-40 blur-xl dark:blur-3xl rounded-3xl"
 				/>
 
 				{/* this boi wraps the real shi */}
 				<div
-					className=" relative w-full h-full rounded-3xl overflow-hidden flex flex-col md:flex-row md:items-center md:justify-center z-10"
+					className="relative z-10 flex flex-col w-full h-full overflow-hidden md:flex-row md:justify-center md:items-center rounded-3xl"
 					style={{
 						backgroundImage: `url(${theme === "dark" ? authbg : lightauthbg}`,
 						backgroundSize: "cover",
@@ -40,12 +29,12 @@ const NewAuthPage = () => {
 					}}
 				>
 					{/* the real shi */}
-					<div className="w-full md:w-1/2 h-full px-8 py-10 flex flex-col justify-center dark:bg-black/60 backdrop-blur-xl items-center md:items-start">
+					<div className="flex flex-col items-center justify-center w-full h-full px-8 py-10 md:items-start dark:bg-black/60 backdrop-blur-xl md:w-1/2">
 						
-                        <TextAnimate  animation='blurInUp' by='word' as='h2' className="text-3xl font-bold mb-2 font-mono text-white text-center md:text-start">
+                        <TextAnimate  animation='blurInUp' by='word' as='h2' className="mb-2 font-mono text-3xl font-bold text-center text-white md:text-start">
 							{mode === "login" ? "Welcome back." : "Create an account."}
 						</TextAnimate>
-						<p className="text-stone-400 text-sm mb-6">
+						<p className="mb-6 text-sm text-stone-400">
 							{mode === "login" ? (
 								<>
 									New here?{" "}
@@ -75,7 +64,7 @@ const NewAuthPage = () => {
 					</div>
 
 					{/* spacing because idk how to use masks */}
-					<div className="hidden md:block dark:bg-black/60 md:w-1/2 h-full" />
+					<div className="hidden h-full md:block dark:bg-black/60 md:w-1/2" />
 				</div>
 			</div>
 		</BlurFade>
