@@ -27,13 +27,15 @@ const RegisterPage = () => {
                         dark:text-white font-polt md:text-start"
                     >
                         {/* using bottom margin as -3 to bring that shit closer to the big thing. will look into this thing later */}
-                        
                         Create an account.
                     </TextAnimate>
 
                     <p className="mb-6 pl-0.5 text-black/60 text-sm dark:text-white/39">
                         Already have an account?{" "}
-                        <Button variant="link" className="px-1 text-[#35405d] dark:text-white">
+                        <Button
+                            variant="link"
+                            className="px-1 text-[#35405d] dark:text-white"
+                        >
                             <Link to="/login">Login</Link>
                         </Button>
                     </p>
@@ -42,7 +44,7 @@ const RegisterPage = () => {
                 </div>
 
                 {/* Right: whatever was in the figma file ngl */}
-                <div className="hidden md:flex items-center bg-[url('/src/assets/regbg.svg')] bg-cover bg-no-repeat bg-center rounded-4xl md:w-1/2 h-full font-serif font-bold text-4xl text-center"></div>
+                <div className="hidden md:flex items-center bg-[url('/src/assets/regbg.svg')] bg-cover bg-no-repeat bg-center rounded-4xl md:w-1/2 h-full font-polt font-bold text-4xl text-center"></div>
             </div>
         </BlurFade>
     );

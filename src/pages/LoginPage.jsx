@@ -28,7 +28,10 @@ const LoginPage = () => {
 
                     <p className="mb-6 pl-0.5 text-black/60 text-sm dark:text-white/39">
                         New here?{" "}
-                        <Button variant="link" className="px-1 text-[#35405d] dark:text-white">
+                        <Button
+                            variant="link"
+                            className="px-1 text-[#35405d] dark:text-white"
+                        >
                             <Link to="/register">Register</Link>
                         </Button>
                     </p>
@@ -37,7 +40,7 @@ const LoginPage = () => {
                 </div>
 
                 {/* Right: Background image */}
-                <div className="hidden md:flex items-center bg-[url('/src/assets/regbg.svg')] bg-cover bg-no-repeat bg-center rounded-4xl md:w-1/2 h-full font-serif font-bold text-4xl text-center"></div>
+                <div className="hidden md:flex items-center bg-[url('/src/assets/regbg.svg')] bg-cover bg-no-repeat bg-center rounded-4xl md:w-1/2 h-full font-polt font-bold text-4xl text-center"></div>
             </div>
         </BlurFade>
     );

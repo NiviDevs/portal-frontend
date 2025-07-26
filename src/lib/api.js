@@ -1,6 +1,6 @@
 import axios from "axios";
 
-var onlineMode = false;
+var onlineMode = true;
 //for testing use localhost else use the one hosted on render
 
 export const BASE_URL = onlineMode

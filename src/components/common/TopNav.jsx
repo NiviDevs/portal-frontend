@@ -11,10 +11,10 @@ const TopNav = () => {
     if (!ready) return null;
 
     const tabs = [
-        { label: "Home", to: "/" },
-        { label: "About", to: "/about" },
+        { label: "HOME", to: "/" },
+        { label: "ABOUT", to: "/about" },
         // Only show Dashboard when user is logged in
-        ...(user ? [{ label: "Dashboard", to: "/dashboard" }] : [])
+        ...(user ? [{ label: "DASHBOARD", to: "/dashboard" }] : [])
     ];
 
     return (
@@ -32,8 +32,10 @@ const TopNav = () => {
                             <Link key={tab.label} to={tab.to} data-id={tab.label}>
                                 <Button
                                     variant={isActive ? "secondary" : "link"}
-                                    className={isActive ? "text-sm font-medium font-polt px-4 py-1 rounded-full bg-[#eef0ca] hover:bg-[#eef0ca]"
-                                    :"text-sm font-medium font-polt px-4 py-1 rounded-full "}
+                                    className={isActive ? 
+                                        "text-sm font-medium font-polt px-4 py-1 rounded-full bg-[#eef0ca] hover:bg-[#eef0ca] text-[#6c5e3a] uppercase"
+                                        : "text-sm font-medium font-polt px-4 py-1 rounded-full text-[#fff8e6] hover:text-[#6c5e3a] uppercase"
+                                    }
                                 >
                                     {tab.label}
                                 </Button>
@@ -43,7 +45,7 @@ const TopNav = () => {
                     
                     {/* Login/Profile button - only show when user is not logged in */}
                     {!user ? (
-                        <Link key="Login" to="/login" data-id="login">
+                        <Link key="LOGIN" to="/login" data-id="login">
                             <Button
                                 variant={
                                     location.pathname.startsWith("/login") ||
@@ -54,15 +56,22 @@ const TopNav = () => {
                                 className={
                                     (location.pathname.startsWith("/login") ||
                                     location.pathname.startsWith("/register"))
-                                        ? "text-sm font-medium font-polt px-4 py-1 rounded-full bg-[#eef0ca] hover:bg-[#eef0ca]"
-                                        : "text-sm font-medium font-polt px-4 py-1 rounded-full "
+                                        ? "text-sm font-medium font-polt px-4 py-1 rounded-full bg-[#eef0ca] hover:bg-[#eef0ca] text-[#6c5e3a] uppercase"
+                                        : "text-sm font-medium font-polt px-4 py-1 rounded-full text-[#fff8e6] hover:text-[#6c5e3a] uppercase"
                                 }
                             >
-                                Login
+                                LOGIN
                             </Button>
                         </Link>
                     ) : (
-                        <UserPopover variant="link">Profile</UserPopover>
+                        <div className="rounded-full">
+                            <UserPopover 
+                                variant="link"
+                                className="text-sm font-medium font-polt px-4 py-1 rounded-full text-[#fff8e6] hover:text-[#6c5e3a] uppercase"
+                            >
+                                PROFILE
+                            </UserPopover>
+                        </div>
                     )}
                 </AnimatedBackground>
             </div>
