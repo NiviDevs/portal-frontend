@@ -4,7 +4,7 @@ const LandingPage = () => {
     return (
         <div className="relative h-screen w-full">
             {/* Background */}
-            <div className="absolute inset-0 bg-cover bg-center bg-[url('src/assets/bigbg.svg')] z-0" />
+            <div className="absolute inset-0 bg-cover bg-center bg-[url('/src/assets/landingbg.webp')] z-0" />
 
             {/* Blue overlay */}
             <div className="absolute inset-0 bg-blue-900/30 z-10" />
