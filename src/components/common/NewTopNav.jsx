@@ -1,4 +1,3 @@
-// src/components/navigation/TopNav.jsx
 import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "@/components/common/ThemeToggle";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
@@ -6,23 +5,28 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import UserPopover from "./UserPopover";
 
-// Accept props for active section and navigation handler
-const TopNav = ({ activeSection, onNavigate }) => {
+// Accept optional props for integration with LandingPage
+const NewTopNav = ({ activeSection = null, onNavigate = null }) => {
     const { user } = useAuth();
-    const location = useLocation(); // Still useful for Dashboard/Login logic if needed
+    const location = useLocation();
 
-    // Tabs for navigation - these will scroll, not navigate (except Dashboard/Login)
-    // We can represent Home/Hero and About as scroll targets
+    // Define navigation items
     const navItems = [
-        { label: "HOME", id: "home" }, // ID corresponds to section
+        { label: "HOME", id: "hero" }, 
         { label: "ABOUT", id: "about" },
-        // Dashboard and Login/Profile remain as navigation links
         ...(user ? [{ label: "DASHBOARD", to: "/dashboard" }] : [])
     ];
 
-    // Determine if a nav item (scroll target) is active
-    const isNavItemActive = (itemId) => {
-        return activeSection === itemId;
+    // Determine if a scroll-based nav item is active
+    const isScrollItemActive = (itemId) => {
+        return activeSection !== null && activeSection === itemId;
+    };
+
+    // Handle clicks for scroll items
+    const handleScrollItemClick = (itemId) => {
+        if (onNavigate) {
+            onNavigate(itemId);
+        }
     };
 
     return (
@@ -32,9 +36,9 @@ const TopNav = ({ activeSection, onNavigate }) => {
                     transition={{ type: "spring", bounce: 0.2, duration: 0.1 }}
                 >
                     {navItems.map((item) => {
-                        // Handle Dashboard and Login/Profile (navigation)
-                        if (item.to) { // Items with 'to' are navigation links
-                             const isActive =
+                        // Handle standard navigation links (Dashboard, Login/Profile)
+                        if (item.to) {
+                            const isActive =
                                 location.pathname === item.to ||
                                 (item.to !== "/" && location.pathname.startsWith(item.to));
 
@@ -53,17 +57,18 @@ const TopNav = ({ activeSection, onNavigate }) => {
                             );
                         }
 
-                        // Handle Home and About (scroll targets)
-                        // These are buttons that trigger scroll, not Links that navigate
+                        // Handle scroll-based links (Home, About)
+                        const isActive = isScrollItemActive(item.id);
+
                         return (
                             <button
                                 key={item.label}
                                 type="button"
-                                onClick={() => onNavigate?.(item.id)} // Call scroll function
+                                onClick={() => handleScrollItemClick(item.id)}
                                 data-id={item.label.toLowerCase()}
-                                className={isNavItemActive(item.id) ?
-                                    "text-sm font-medium font-polt px-4 py-1 rounded-full bg-[#eef0ca] text-[#6c5e3a] uppercase cursor-pointer" // Active style
-                                    : "text-sm font-medium font-polt px-4 py-1 rounded-full text-[#fff8e6] hover:text-[#6c5e3a] uppercase cursor-pointer" // Inactive style
+                                className={isActive ?
+                                    "text-sm font-medium font-polt px-4 py-1 rounded-full bg-[#eef0ca] text-[#6c5e3a] uppercase cursor-pointer"
+                                    : "text-sm font-medium font-polt px-4 py-1 rounded-full text-[#fff8e6] hover:text-[#6c5e3a] uppercase cursor-pointer"
                                 }
                             >
                                 {item.label}
@@ -71,7 +76,7 @@ const TopNav = ({ activeSection, onNavigate }) => {
                         );
                     })}
 
-                    {/* Login/Profile button - only show when user is not logged in */}
+                    {/* Login/Profile button */}
                     {!user ? (
                         <Link key="LOGIN" to="/login" data-id="login">
                             <Button
@@ -111,4 +116,4 @@ const TopNav = ({ activeSection, onNavigate }) => {
     );
 };
 
-export default TopNav;
+export default NewTopNav;
